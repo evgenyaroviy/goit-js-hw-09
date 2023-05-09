@@ -2,6 +2,10 @@ import Notiflix from 'notiflix';
 import flatpickr from "flatpickr";
 import "flatpickr/dist/flatpickr.min.css";
 
+let timerId;
+let endTime;
+let dayNow = new Date();
+
 const options = {
     enableTime: true,
     dateFormat: "Y-m-d H:i",
@@ -30,12 +34,10 @@ const refs = {
     seconds: document.querySelector('[data-seconds]'),
 }
 buttonRef.disabled = true;
-const dayNow = new Date();
-let timerId;
 
 buttonRef.addEventListener('click', () => {
     timerId = setInterval(() => {
-    const dayNow = new Date();
+    dayNow = new Date();
     const startTime = dayNow.getTime();
     const endTimeMS = endTime.getTime();
 
@@ -86,7 +88,6 @@ timerStyle.style.display = 'flex';
 timerStyle.style.gap = '20px';
 
 const valueStyle = document.querySelectorAll('.value');
-console.log(valueStyle)
 valueStyle.forEach((value) => {
     value.style.display = 'flex';
     value.style.alignItems = 'center';
@@ -96,7 +97,6 @@ valueStyle.forEach((value) => {
     
 })
 const labelStyle = document.querySelectorAll('.label');
-console.log(labelStyle)
 labelStyle.forEach((value) => {
     value.style.display = 'flex';
     value.style.fontWeight = '400';
